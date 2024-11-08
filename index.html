@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="css/style.css">
-    <sctipt scr="js/main.js"></sctipt>
 </head>
 <body>
-    <div class="x"></div>
+<div class="flex">
+    <div class="grid">
+        <button onclick="ticPosition(this)" id="0" class="empty"></button>
+        <button onclick="ticPosition(this)" id="1" class="empty"></button>
+        <button onclick="ticPosition(this)" id="2" class="empty"></button>
+        <button onclick="ticPosition(this)" id="3" class="empty"></button>
+        <button onclick="ticPosition(this)" id="4" class="empty"></button>
+        <button onclick="ticPosition(this)" id="5" class="empty"></button>
+        <button onclick="ticPosition(this)" id="6" class="empty"></button>
+        <button onclick="ticPosition(this)" id="7" class="empty"></button>
+        <button onclick="ticPosition(this)" id="8" class="empty"></button>
+    </div>
+    <button onclick="reset()" class="reset">Reset</button>
+</div>
+<script src="./js/main.js"></script>
 </body>
 </html>
