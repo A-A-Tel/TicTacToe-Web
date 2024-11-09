@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    color: #000;
 }
 
 body {
@@ -76,6 +77,7 @@ button {
     width: 700px;
     height: 700px;
     background: #000;
+
 }
 
 .reset {
@@ -92,4 +94,16 @@ button {
 
 .green {
     background: #5ba65b;
+}
+
+.counter {
+    font-size: 32pt;
+    margin: auto;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }

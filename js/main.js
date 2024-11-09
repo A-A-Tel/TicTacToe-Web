@@ -1,7 +1,10 @@
 let turnX = true;
-let positions = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
 let playing = true;
 
+let xWins = 0;
+let oWins = 0;
+
+let positions = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
 const winCombos = [
     ["0", "1", "2"],
     ["3", "4", "5"],
@@ -27,9 +30,13 @@ function ticPosition(button) {
         if (winCheck()) {
             if (turnX) {
                 playing = false;
+                xWins++;
+                document.getElementById("xcount").textContent = xWins.toString();
                 console.log("Player X won");
             } else {
                 playing = false;
+                oWins++;
+                document.getElementById("ocount").textContent = oWins.toString();
                 console.log("Player O won");
             }
         }
