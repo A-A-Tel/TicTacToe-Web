@@ -1,69 +1,56 @@
-let turnX = true;
-let playing = true;
-
-let xWins = 0;
-let oWins = 0;
-
-let positions = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
-const winCombos = [
-    ["0", "1", "2"],
-    ["3", "4", "5"],
-    ["6", "7", "8"],
-    ["0", "3", "6"],
-    ["1", "4", "7"],
-    ["2", "5", "8"],
-    ["0", "4", "8"],
-    ["2", "4", "6"]
+const correctPositions = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
 ];
+const board = new Array(9);
+board.fill('-');
 
+let movesPassed = 0;
+let hasWon = false;
+let turnX = true;
 
-function ticPosition(button) {
-    if (positions.includes(button.id) && playing) {
-        document.getElementById(button.id).classList.remove("empty");
-        if (turnX) {
-            document.getElementById(button.id).classList.add("x");
-            positions[button.id] = "x";
-        } else {
-            document.getElementById(button.id).classList.add("o");
-            positions[button.id] = "o";
+function checkWin(cssClass) {
+    correctPositions.forEach(position => {
+        if (board[position[0]] === cssClass &&
+            board[position[1]] === cssClass &&
+            board[position[2]] === cssClass) {
+
+            hasWon = true;
         }
-        if (winCheck()) {
-            if (turnX) {
-                playing = false;
-                xWins++;
-                document.getElementById("xcount").textContent = xWins.toString();
-                console.log("Player X won");
-            } else {
-                playing = false;
-                oWins++;
-                document.getElementById("ocount").textContent = oWins.toString();
-                console.log("Player O won");
-            }
-        }
-        turnX = !turnX;
-    }
-}
-
-function winCheck() {
-    for (const combo of winCombos) {
-        if (positions[combo[0]] === positions[combo[1]] && positions[combo[1]] === positions[combo[2]]) {
-            document.getElementById(combo[0]).classList.add("green");
-            document.getElementById(combo[1]).classList.add("green");
-            document.getElementById(combo[2]).classList.add("green");
-            return true;
-        }
-    }
-    return false;
-}
-
-function reset() {
-    positions = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
-    playing = true;
-    turnX = true;
-    positions.forEach(id => {
-        document.getElementById(id).classList.remove("o");
-        document.getElementById(id).classList.remove("x");
-        document.getElementById(id).classList.remove("green");
-        document.getElementById(id).classList.add("empty");
     });
+}
+
+function resetBoard() {
+
+    for (let i = 0; i < board.length; i++) {
+        document.getElementById(i.toString()).className = 'spot-empty';
+        board[i] = '-';
+    }
+    turnX = true;
+    movesPassed = 0;
+    hasWon = false;
+}
+
+function setSpot(element) {
+    if (board[element.id] === '-' && !hasWon) {
+
+        const cssClass = turnX ? 'spot-x' : 'spot-o';
+
+        element.className = cssClass;
+        board[element.id] = cssClass;
+        checkWin(cssClass);
+
+        if (hasWon || movesPassed >= 9) {
+            setTimeout(resetBoard, 5000);
+        } else {
+            movesPassed++;
+            turnX = !turnX;
+        }
+    }
 }

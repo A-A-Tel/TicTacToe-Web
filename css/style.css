@@ -1,109 +1,54 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: #000;
 }
 
-body {
-    background-color: #fff;
-    height: 100%;
-    position: fixed;
-    width: 100%;
-}
-
-button {
-    border: none;
-    cursor: pointer;
-    outline: none;
-}
-
-.x {
-    position: relative;
-    background: #fff;
-    width: 200px;
-    height: 200px;
-}
-.x::before, .x::after {
-    content: "";
-    width: 200px;
-    height: 50px;
-    background-color: #000;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-.x::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.o {
-    background-color: #fff;
-    position: relative;
-    width: 200px;
-    height: 200px;
-}
-.o::before {
-    content: "";
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 20px solid #000;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.empty {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    background: #fff;
-}
-
-.flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: inherit;
-}
-
-.grid {
+.game-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
-    width: 700px;
-    height: 700px;
+    width: 32vw;
+    height: 32vw;
     background: #000;
-
+    gap: 1vw;
 }
 
-.reset {
+.spot-empty {
+    width: 10vw;
+    height: 10vw;
+    background: #fff;
+}
+
+.spot-x, .spot-o {
     position: relative;
-    width: 150px;
-    height: 75px;
-    margin-top: 50px;
-    font-size: 22pt;
-    color: #b4b4b4;
-    background-color: #0000ff;
-    border: 10px solid #000059;
-    border-radius: 10px;
+    width: 10vw;
+    height: 10vw;
+    background: #fff;
 }
 
-.green {
-    background: #5ba65b;
+.spot-o::after {
+    content: '';
+    position: absolute;
+    bottom: 0.5vw;
+    left: 0.5vw;
+    border: #f00 1vw solid;
+    width: 7vw;
+    height: 7vw;
+    border-radius: 50%;
 }
 
-.counter {
-    font-size: 32pt;
-    margin: auto;
-    text-align: center;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
+.spot-x:before, .spot-x:after {
+    content: '';
+    position: absolute;
+    bottom: 4vw;
+    left: 0;
     width: 100%;
+    height: 2vw;
+    background-color: #0ff;
+    transform-origin: center;
+    transform: rotate(45deg);
+}
+
+.spot-x:after {
+    transform: rotate(-45deg);
 }

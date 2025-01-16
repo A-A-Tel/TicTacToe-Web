@@ -3,36 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tic Tac Toe</title>
+    <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="flex">
-    <div class="row">
-        <div class="counter">
-            <span>X Wins:</span>
-            <br>
-            <span id="xcount">0</span>
-        </div>
-        <div class="grid">
-            <button onclick="ticPosition(this)" id="0" class="empty"></button>
-            <button onclick="ticPosition(this)" id="1" class="empty"></button>
-            <button onclick="ticPosition(this)" id="2" class="empty"></button>
-            <button onclick="ticPosition(this)" id="3" class="empty"></button>
-            <button onclick="ticPosition(this)" id="4" class="empty"></button>
-            <button onclick="ticPosition(this)" id="5" class="empty"></button>
-            <button onclick="ticPosition(this)" id="6" class="empty"></button>
-            <button onclick="ticPosition(this)" id="7" class="empty"></button>
-            <button onclick="ticPosition(this)" id="8" class="empty"></button>
-        </div>
-        <div class="counter">
-            <span>O Wins:</span>
-            <br>
-            <span id="ocount">0</span>
-        </div>
+    <div class="game-grid">
+        <div onclick="setSpot(this)" id="0" class="spot-empty"></div>
+        <div onclick="setSpot(this)"  id="1" class="spot-empty"></div>
+        <div onclick="setSpot(this)"  id="2" class="spot-empty"></div>
+        <div onclick="setSpot(this)"  id="3" class="spot-empty"></div>
+        <div onclick="setSpot(this)"  id="4" class="spot-empty"></div>
+        <div onclick="setSpot(this)"  id="5" class="spot-empty"></div>
+        <div onclick="setSpot(this)"  id="6" class="spot-empty"></div>
+        <div onclick="setSpot(this)"  id="7" class="spot-empty"></div>
+        <div onclick="setSpot(this)"  id="8" class="spot-empty"></div>
     </div>
-    <button onclick="reset()" class="reset">Reset</button>
-</div>
-<script src="./js/main.js"></script>
+
+<script src="js/main.js"></script>
 </body>
 </html>
